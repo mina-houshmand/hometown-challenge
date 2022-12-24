@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJbnRnMoX6yX5sQEYqA7k-GWS_oFQs2zH_dmvehtDA9rYsNbwgmd4WQA4OqwDehmh9bOE&usqp=CAU"
+      type="image/x-icon"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <title>Hometown</title>
+    <style>
+      * {
+        margin: 0;
+        color: #d9dad7;
+      }
+      .body-div {
+        background: #1a2639;
+      }
+      .align {
+        text-align: center;
+      }
+      .nav-bar {
+        height: 4vw;
+        background-color: #1a2639;
+        font-size: 1.5vw;
+        display: flex;
+      }
+      .nav-list-left {
+        padding: 1vw;
+      }
+      .nav-list-left li {
+        list-style: none;
+        display: inline;
+        padding: 20px;
+      }
+      .nav-list-left a {
+        text-decoration: none;
+        font-weight: bolder;
+        color: #d9dad7;
+      }
+      .input-part {
+        display: inline;
+      }
+      .input-icon i {
+        position: absolute;
+      }
+      .i-color {
+        color: #d9dad7;
+      }
+      .i-setting {
+        cursor: pointer;
+      }
+      .input-nav {
+        background: none;
+        border: none;
+        height: 25px;
+      }
+      .input-nav::placeholder {
+        color: #d9dad7;
+        font-size: 1vw;
+        font-family: "Times New Roman", Times, serif;
+      }
+      .input-nav:hover {
+        border: 2px solid #d9dad7;
+        border-radius: 5px;
+        padding: 5px;
+      }
+
+      .introduction-iran-container {
+        background-color: #d9dad7;
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+      .iran {
+        color: #c24d2c;
+      }
+      .header-text {
+        background-color: #d9dad7;
+        padding-bottom: 50px;
+        padding-top: 5px;
+      }
+      .header-text h1 {
+        font-size: 4vw;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        color: #1a2639;
+      }
+
+      .header-text h5 {
+        font-size: 2vw;
+        color: #5a6d8f;
+        margin-bottom: 90px;
+      }
+      .header-text p {
+        font-size: 1.2vw;
+        line-height: 25px;
+        margin: 30px 0;
+        width: 65%;
+        margin: 20px auto;
+        color: #495772;
+        text-align: center;
+      }
+      .header-img {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        justify-content: center;
+        margin-bottom: 0 !important;
+      }
+
+      .header-img img {
+        width: 16.5vw;
+        height: 10vw;
+        object-fit: cover;
+      }
+      .content-img-header {
+        position: relative;
+      }
+      .text-img-header {
+        /*  DIMENSIONS */
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+
+        /*  POSITION */
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: center;
+        padding-top: 20%;
+
+        /*  COLORS */
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #c24a2c;
+        font-weight: bolder;
+        font-size: 2vw;
+        /*  SHOW/HIDE */
+        visibility: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .content-img-header:hover .text-img-header {
+        visibility: visible;
+        opacity: 1;
+      }
+      .introduction-iran {
+        margin: 60px;
+      }
+
+      .introduction-iran > * {
+        background-color: #5a6d8f !important;
+        padding: 50px;
+        border-radius: 10px 50px;
+        width: 90%;
+      }
+      .introduction-passage {
+        display: inline;
+        float: left;
+        width: 50%;
+        font-size: 1.3vw;
+        line-height: 1.7vw;
+        text-align: justify;
+        padding: 20px;
+      }
+
+      .introduction-em {
+        color: #1a2639;
+        font-size: 3vw;
+      }
+      .introduction-p {
+        margin-top: 30px;
+        text-indent: 3%;
+        border-left: 3px solid #c24a2c;
+        padding-left: 20px;
+      }
+      .introduction-flag {
+        margin-top: 60px;
+      }
+      .introduction-flag img {
+        display: block;
+        height: 35vw;
+        border-radius: 10px;
+        box-shadow: 10px 10px 30px #1a2639;
+        display: block;
+        margin: auto;
+        padding: 20px;
+        margin-right: 40px;
+      }
+      .reveal {
+        position: relative;
+        transform: translateY(150px);
+        opacity: 0;
+        transition: 1s all ease;
+      }
+
+      .reveal.active {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      #hr-after-intro-1 {
+        border: 5px solid #c24d2c;
+        width: 100%;
+      }
+      #hr-after-intro-2 {
+        width: 100%;
+        margin: 5px;
+        border: 2px solid #3e4a61;
+      }
+      #hr-after-intro-3 {
+        border: 2px solid #c24d2c;
+        width: 100%;
+        margin-top: 2px;
+      }
+      .my-hometown em {
+        display: block;
+      }
+
+      .my-hometown {
+        text-align: center;
+        font-size: 4vw;
+        margin-bottom: 50px;
+      }
+      .tabriz-name strong em {
+        color: #c24d2c;
+        font-size: 5vw;
+      }
+      .tabriz-name {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+      /* img slider  ------------------------------------------------ */
+      .tab-intro {
+        background-color: #1a2639;
+        width: 90%;
+        /* display: block; */
+        margin: auto;
+        margin-top: 30px !important;
+      }
+      #content-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .row {
+        width: 100%;
+      }
+
+      #featured {
+        width: 70vw;
+        height: 40vw;
+        object-fit: cover;
+        cursor: pointer;
+        border-radius: 4px;
+        display: block;
+        margin: auto;
+      }
+
+      .thumbnail {
+        object-fit: cover;
+        max-width: 180px;
+        max-height: 100px;
+        cursor: pointer;
+        opacity: 0.5;
+        margin: 5px;
+        border-radius: 5px;
+      }
+
+      .thumbnail:hover {
+        opacity: 1;
+      }
+
+      .active-2 {
+        opacity: 1;
+      }
+
+      #slide-wrapper {
+        max-width: 80%;
+        display: flex;
+        min-height: 100px;
+        align-items: center;
+        margin: auto;
+      }
+
+      #slider {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        margin-bottom: 100px;
+        margin-top: 10px;
+      }
+
+      #slider::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      #slider::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px #c24a2c;
+        border-radius: 100px;
+      }
+
+      #slider::-webkit-scrollbar-thumb {
+        background-color: #3e4a61;
+        border-radius: 100px;
+      }
+
+      #slider::-webkit-scrollbar-thumb:hover {
+        background-color: #c24a2c;
+      }
+
+      .arrow {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin: 0 10px 100px 10px;
+      }
+
+      .arrow:hover {
+        opacity: 0.5;
+        width: 35px;
+        height: 35px;
+      }
+
+      /*  ---------------------------------main page---------------- */
+
+      .main {
+        background-color: rgba(179, 174, 174, 0.5);
+        width: 80%;
+        display: block;
+        margin: auto;
+        border-radius: 30px;
+      }
+      .container {
+        padding: 40px 0;
+      }
+      .container h1 {
+        color: #1a2639;
+        margin: 2vw;
+        font-size: 4vw;
+        text-align: center;
+      }
+      .container p {
+        text-align: justify;
+        font-size: 1.3vw;
+        line-height: 1.7vw;
+        margin: 2vw;
+      }
+      .container h3 {
+        color: #9e2300;
+        margin: 2vw;
+        font-size: 2vw;
+      }
+      .container img {
+        display: block;
+        margin: auto;
+        width: 60vw;
+      }
+      .footer {
+        height: 6vw;
+        background-color: #5a6d8f;
+        margin-top: 100px;
+      }
+      .list-footer ul {
+        padding-top: 20px;
+      }
+      .list-footer ul li {
+        list-style: none;
+        display: inline;
+        margin: 30px;
+      }
+      .list-footer li a {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="body-div">
+      <div class="nav-bar">
+        <div class="nav-list-left">
+          <ul>
+            <i
+              class="fa fa-align-justify i-color i-setting"
+              aria-hidden="true"
+            ></i>
+
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <div class="input-part">
+              <i class="fa fa-search i-color i-setting"></i>
+              <input
+                class="input-nav"
+                type="search"
+                placeholder="search Place"
+              />
+            </div>
+          </ul>
+        </div>
+      </div>
+      <hr id="hr-after-intro-1" />
+      <hr id="hr-after-intro-3" />
+
+      <div class="header-text align">
+        <h1>Journey through <span class="iran">Iran</span></h1>
+        <h5>History, Culture & Personalities</h5>
+      </div>
+      <hr id="hr-after-intro-3" />
+
+      <div class="header-img">
+        <div class="content-img-header">
+          <img src="./img-city/azadi.jpg" alt="azadi" />
+          <p class="text-img-header">Azadi Tower</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/bonud.jpg" alt="bonud" />
+          <p class="text-img-header">Benood Beach</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-tab/saat.jpg" alt="tabriz" />
+          <p class="text-img-header">Sa'at Square</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/Chalus-Road-Namak-Abrud.jpg" alt="chalus" />
+          <p class="text-img-header">Chalus Road</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/arg bam.png" alt="argBam" />
+          <p class="text-img-header">Bam Citadel</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/golestan-palace.jpg" alt="golestan" />
+          <p class="text-img-header">Golestan Palace</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/dezful.JPG" alt="dezful" />
+          <p class="text-img-header">Dez Dam</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/red-beach-of-hormuz-2022.jpg" alt="hormoz" />
+          <p class="text-img-header">Hormuz Island</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/chahkuh geshm.jpg" alt="chahkuhGeshm" />
+          <p class="text-img-header">Chahkooh Canyon</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/33pol.jpg" alt="33pol" />
+          <p class="text-img-header">Si-o-se-pol</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/kurosh.jpeg" alt="kurosh" />
+          <p class="text-img-header">Tomb of Cyrus</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/nur.jpg" alt="nur" />
+          <p class="text-img-header">Nur Jungle Park</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/takhtejamshid.jpg" alt="takhteJamshid" />
+          <p class="text-img-header">Persepolis</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-tab/elgoli.jpg" alt="elgholi" />
+          <p class="text-img-header">El-Gölü</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/masal.jpg" alt="masal" />
+          <p class="text-img-header">Masal</p>
+        </div>
+        <div class="content-img-header">
+          <img
+            src="./img-city/سازه-های-آبی-شوشتر-3.jpg"
+            alt="sazeAbiShushtar"
+          />
+          <p class="text-img-header">Shushtar Historical Hydraulic Sys</p>
+        </div>
+        <div class="content-img-header">
+          <img
+            src="./img-city/alisadr-cave-hamadfan-iran-traveling-center.jpg"
+            alt="alisadr"
+          />
+          <p class="text-img-header">Ali-Sadr Cave</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/damavand.jpg" alt="damavand" />
+          <p class="text-img-header">Mount Damavand</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/ghale-rudkhan.jpg" alt="ghaleRudkhan" />
+          <p class="text-img-header">Rudkhan Castle</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/gharasmasar.JPG" alt="gharasmasar" />
+          <p class="text-img-header">Namekdan Cave</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/kish-island.jpg" alt="kish" />
+          <p class="text-img-header">Kish Island</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/milad.jpg" alt="miladTower" />
+          <p class="text-img-header">Milad Tower</p>
+        </div>
+        <div class="content-img-header">
+          <img src="./img-city/kavire-bafgh-Yazd.jpg" alt="yazd" />
+          <p class="text-img-header">Yazd</p>
+        </div>
+        <div class="content-img-header">
+          <img src="img-city/urnieh.jpg" alt="urmieh" />
+          <p class="text-img-header">Urmia Lake</p>
+        </div>
+      </div>
+      <hr id="hr-after-intro-3" />
+
+      <div class="introduction-iran-container">
+        <div class="introduction-iran reveal">
+          <div class="introduction-passage">
+            <span
+              ><strong
+                ><em class="introduction-em">About Iran</em></strong
+              ></span
+            >
+            <p class="introduction-p">
+              Iran, formerly known as Persia, is situated at the crossroads of
+              Central Asia, South Asia, and the Arab states of the Middle East.
+              This strategic position and its access to the Persian Gulf in the
+              south have made Iran an important country throughout its history.
+              Iran has one of the oldest, richest and most influential art
+              heritages in the world which encompasses many disciplines
+              including literature, music, dance, architecture, painting,
+              weaving, pottery, calligraphy, metalworking and stonemasonry. Iran
+              is known for its massive reserves of fossil fuels. It has the
+              world's second-biggest proved gas reserves after Russia and ranks
+              third in the world in natural gas production. It also has the
+              world's fourth-biggest oil reserves. Iranian culture is one of the
+              oldest in the region, and it has influenced cultures like Italy,
+              Macedonia, Greece, Russia, the Arabian Peninsula, and parts of
+              Asia. Islam is practiced by the majority of Iranians and governs
+              their personal, political, economic and legal lives. Iran is home
+              to a myriad of stunning natural wonders such as colorful mountains
+              and beaches with red sand. But not only the beautiful landscapes
+              of Iran will take your breath away but its architectural
+              masterpieces. Persian Islamic art and architecture are beyond
+              impeccable. Iran is one of the safest country we have ever
+              visited. We wandered around at night and never had any problems at
+              all. Also, we used our mobile phones in public transport. We know
+              in most European countries this sounds nonsense, but you can't
+              really do this in Sao Paulo, Brazil, for instance.
+            </p>
+          </div>
+          <div class="introduction-flag">
+            <img src="./other-img/flag.png" alt="iran-flag" />
+          </div>
+        </div>
+      </div>
+      <hr id="hr-after-intro-1" />
+      <!-- <hr id="hr-after-intro-2" /> -->
+      <hr id="hr-after-intro-3" />
+
+      <div class="tab-intro">
+        <div class="my-hometown reveal">
+          <h1><em>My Home Town</em></h1>
+        </div>
+        <div class="tabriz-name reveal">
+          <h2>
+            <strong><em>Tabriz</em></strong>
+          </h2>
+        </div>
+        <!-- img slider -->
+
+        <div class="row reveal">
+          <img
+            id="featured"
+            src="./img-tab/Screenshot from 2022-11-05 19-32-25.png"
+          />
+
+          <div id="slide-wrapper">
+            <img
+              id="slideLeft"
+              class="arrow"
+              src="./other-img/arrow-left.png"
+            />
+
+            <div id="slider">
+              <img class="thumbnail active-2" src="./img-tab/blue mousge.jpg" />
+
+              <img class="thumbnail" src="./img-tab/saat.jpg" />
+              <img class="thumbnail" src="./img-tab/wtc.jpg" />
+
+              <img
+                class="thumbnail"
+                src="./img-tab/constitution-house-of-tabriz.jpg"
+              />
+              <img
+                class="thumbnail"
+                src="./img-tab/qari-bridge-tabriz-1024x768.jpg"
+              />
+              <img class="thumbnail" src="./img-tab/farsh.jpg" />
+              <img class="thumbnail" src="./img-tab/bazar.jpg" />
+              <img class="thumbnail" src="./img-tab/ghonga.jpg" />
+              <img
+                class="thumbnail"
+                src="./img-tab/Behnam-House-1024x768.jpg"
+              />
+
+              <img class="thumbnail" src="./img-tab/Aladaghlar.jpg" />
+              <img class="thumbnail" src="./img-tab/babak castel.jpg" />
+              <img class="thumbnail" src="./img-tab/kandovan-02.jpg" />
+              <img class="thumbnail" src="./img-tab/shoara.jpg" />
+              <img
+                class="thumbnail"
+                src="./img-tab/a-grave-inside-Azarbaijan-Museum-1030x580.jpg"
+              />
+              <img
+                class="thumbnail"
+                src="./img-tab/Screenshot from 2022-11-05 19-32-25.png"
+              />
+            </div>
+
+            <img
+              id="slideRight"
+              class="arrow"
+              src="./other-img/arrow-right.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="main">
+        <div class="container">
+          <h1>About Tabriz</h1>
+          <p>
+            Tabriz is one of the biggest cities of Iran that is located in the
+            northwest of the country. Recent archeological investigations and
+            explorations in an area that is today called Kaboud Mosque (lit.
+            Crimson Mosque) have estimated this area to be 4500 years old. The
+            ancient city of Tabriz has long been a major player in the history
+            of Iran. Many of the sociopolitical movements of Iran commenced from
+            this city and from there spread to other cities. That is the reason
+            they call Tabriz the City of the First’s.
+          </p>
+          <h3>Tabriz Bazar</h3>
+          <p>
+            <strong>Tabriz's bazar</strong>is one of the most important
+            attractions of the city and you should plan to visit it if you are
+            going to travel to Tabriz. Thousands of years ago, it used to be
+            located on way of the Silk Road and even today is considered as one
+            of the most important commercial and trade centers of Iran. Its
+            bazar belongs to ancient times and has entered UNESCO’s World
+            Heritage Status. Even though it is considered as the beating heart
+            of Iran’s economy in the northwest of the country, thanks to its
+            commercial function, still this intertwining labyrinth is one of the
+            most astonishing tourist attractions of the city and portrays the
+            glory and grandeur of Iranian architecture before the eyes of the
+            world. Moreover, every year, in Moharrem, which takes 10 days, when
+            the biggest religious ceremony and festival is held throughout the
+            country, Tabirz’s bazar plays the role of one of the most important
+            hubs for holding this cultural and religious ceremony.
+          </p>
+          <img src="./img-tab/1 (2).jpeg" />
+          <h3>Tabriz Tourist Attractions</h3>
+          <p>
+            Even though Kaboud Mosque, Qari Bridge, Clock Tower and Museum, the
+            roofed up Bazar, Constitutionalist Movement Museum, Eil Goli Green
+            Space, Ali’Shah Mosque, and Maqbarat’al Sho’araa (lit. the Tomb of
+            Poets) are the most noticeable attractions of this city, and each is
+            indeed a clear testimony to the history and art of it, still
+            becoming familiar with the local culture of the Tabriz-dwellers
+            amounts to the most exciting part of any travel to Tabriz. The love
+            song known as Ashiqi, which is played with local instruments and
+            sang through folkloric lyrics, and the details of the nomadic life
+            of the Shah’Savan tribe are among the most glamorous aspects of the
+            local culture of the Turkish-speaking Tabrizians.
+          </p>
+          <img src="./img-tab/2 (2).jpeg" />
+          <p>
+            The rocky village of Kandowan, portrays a truly creative
+            juxtaposition of nature and art before the eyes of the tourists and
+            visitors who travel to Tabriz. In addition, the historical churches
+            of Saint Stephanous is one of the other tourist attractions of the
+            city that, referring to the observations made by tourist media, is
+            highly popular among the tourists.
+          </p>
+          <h3>Tabriz People</h3>
+          <p>
+            The people of Tabriz are very hospitable and known to regard
+            qualitative and esthetic aspects of culinary quite highly, and thus
+            such an attention paid to dishes and culinary is one of the most
+            singled out aspects of their culture. Thus, to enjoy sitting before
+            a colorful table flourished with highly and eye-pleasingly decorated
+            dishes served for the guests and visitors is considered as one of
+            the joyful experiences that gratify tourists while visiting Tabriz.
+            It is also an industrial city and numerous heavy and light
+            industries are found in operation all around the city that play a
+            note-worthy role not only in Iran’s economy, but also in that of the
+            neighboring countries.
+          </p>
+          <h3>Tabriz Climate</h3>
+          <p>
+            Tabriz is a mountainous city and the hills located on its outskirt
+            are covered in snow for nearly half of the year, and, for this
+            reason, it also has a mild cool summer, hence an ideal trip
+            destination for summer and winter travels both.
+          </p>
+        </div>
+      </div>
+      <div class="footer row">
+        <div class="list-footer">
+          <ul>
+            <li><a href="#" class="fa fa-phone"> Contact us</a></li>
+            <li><a href="#" class="fa fa-instagram"> Instagram</a></li>
+            <li><a href="#" class="fa fa-linkedin"> Linkedin</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script>
+      function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+
+        for (var i = 0; i < reveals.length; i++) {
+          var windowHeight = window.innerHeight;
+          var elementTop = reveals[i].getBoundingClientRect().top;
+          var elementVisible = 150;
+
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+          } else {
+            reveals[i].classList.remove("active");
+          }
+        }
+      }
+
+      window.addEventListener("scroll", reveal);
+
+      //   img silder
+
+      let thumbnails = document.getElementsByClassName("thumbnail");
+
+      let activeImages = document.getElementsByClassName("active-2");
+
+      for (var i = 0; i < thumbnails.length; i++) {
+        thumbnails[i].addEventListener("click", function () {
+          console.log(activeImages);
+
+          if (activeImages.length > 0) {
+            activeImages[0].classList.remove("active-2");
+          }
+
+          this.classList.add("active-2");
+          document.getElementById("featured").src = this.src;
+        });
+      }
+
+      let buttonRight = document.getElementById("slideRight");
+      let buttonLeft = document.getElementById("slideLeft");
+
+      buttonLeft.addEventListener("click", function () {
+        document.getElementById("slider").scrollLeft -= 180;
+      });
+
+      buttonRight.addEventListener("click", function () {
+        document.getElementById("slider").scrollLeft += 180;
+      });
+    </script>
+  </body>
+</html>
